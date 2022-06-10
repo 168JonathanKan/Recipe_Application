@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Recipe</title>
+    <meta charset="utf-8" />
+</head>
+
+
+<body>
+<img src="/images/food.jpg" style = "width:400px;height:150px;" />
+    <form action="/search/recipe" method="GET">
+       <label> Search Recipe:
+           <input type = "text" name = "query" value="<%= locals.results.searched %>"/>
+       </label>
+       <button type = "submit">Search</button> 
+    </form>
+
+<% locals.results.results.forEach(result =>{ %>
+    <form id ="<%= result.id %>" action = "/search/recipe/details" method = "POST">
+        <input type="hidden" name = "keyword" value = "<%= results.searched %>"/>
+        <input type="hidden" name = "count" value = "<%= results.resultCount %>"/>
+        <input type="hidden" name = "selectedKey" value = "<%= result.id %>"/>
+        <input type="hidden" name = "selectedText" value = "<%= result.name %>"/>
+            <li> 
+                <a href="#" onclick="submitForm('<%= result.id %>')"><%= result.title %></a> 
+                <p> 
+                    
+                    <%= result.summary %> 
+                </p>
+            </li>
+    </form>
+    <script>
+        function submitForm(formId) {
+            let form = document.getElementById(formId);
+            form.submit();
+        }
+    </script>
+<% }); %>
+</body>
+
+</html>
