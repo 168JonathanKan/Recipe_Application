@@ -15,19 +15,17 @@
        </label>
        <button type = "submit">Search</button> 
     </form>
+    <a href="/history/results"> View history </a>
 
 <% locals.results.results.forEach(result =>{ %>
     <form id ="<%= result.id %>" action = "/search/recipe/details" method = "POST">
         <input type="hidden" name = "keyword" value = "<%= results.searched %>"/>
         <input type="hidden" name = "count" value = "<%= results.resultCount %>"/>
         <input type="hidden" name = "selectedKey" value = "<%= result.id %>"/>
-        <input type="hidden" name = "selectedText" value = "<%= result.name %>"/>
+        <input type="hidden" name = "selectedText" value = "<%= result.title %>"/>
             <li> 
                 <a href="#" onclick="submitForm('<%= result.id %>')"><%= result.title %></a> 
-                <p> 
-                    
-                    <%= result.summary %> 
-                </p>
+    
             </li>
     </form>
     <script>

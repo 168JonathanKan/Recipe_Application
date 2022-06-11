@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Recipe</title>
+    <meta charset="utf-8" />
+    <style>
+       
+    </style>
+</head>
+
+
+<body >
+<div>
+    <% locals.history_logs.forEach( history => { %>
+        <li>
+            <br>
+            keyword: <%= history.keyword %><br>
+            count: <%= history.count %><br>
+            selectedText: <%= history.selectedText %><br>
+            timestamp: <%= history.timestamp %><br>
+        </li> 
+    <% }); %>
+    
+
+
+</div>
+
+</body>
+
+</html>

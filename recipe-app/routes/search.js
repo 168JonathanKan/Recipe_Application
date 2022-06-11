@@ -24,17 +24,13 @@ router.get('/recipe', async(req, res) =>{
     try{
         const { query } = req.query;
         //api call to search for recipe
-        const foundRecipe = await recipe.autoSearchRecipe(query);
-        //holds all the search results
-        recipeResults = [];
         //Stores the found foods into an array of objects with the name and id
-        for( const element of foundRecipe ){
-            const recipeSummary = await recipe.searchIDSummary(element.id);
-            recipeResults.push(recipeSummary)
-        };
+        const foundRecipe = await recipe.autoSearchRecipe(query);
+        console.log(foundRecipe);
+        //holds all the search results
         const results = {
-            resultCount: recipeResults.length, 
-            results: recipeResults
+            resultCount: foundRecipe.length, 
+            results: foundRecipe
         };
         //Adds what we searched
         results.searched = query;
